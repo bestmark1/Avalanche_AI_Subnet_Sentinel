@@ -1,0 +1,1 @@
+{"version":3,"file":"DashboardRenderer.d.ts","sourceRoot":"","sources":["../../src/api/DashboardRenderer.ts"],"names":[],"mappings":"AAIA,OAAO,KAAK,EAAE,aAAa,EAAE,MAAM,8BAA8B,CAAC;AAElE,qBAAa,iBAAiB;IAC1B;;OAEG;WACW,MAAM,CAAC,KAAK,EAAE,aAAa,EAAE,OAAO,EAAE,MAAM,GAAG,MAAM;CAqQtE"}
