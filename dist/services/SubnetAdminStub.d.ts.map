@@ -1,0 +1,1 @@
+{"version":3,"file":"SubnetAdminStub.d.ts","sourceRoot":"","sources":["../../src/services/SubnetAdminStub.ts"],"names":[],"mappings":"AAIA,OAAO,KAAK,EAAE,YAAY,EAAE,SAAS,EAAE,MAAM,+BAA+B,CAAC;AAE7E;;;;;;GAMG;AACH,qBAAa,eAAgB,YAAW,YAAY;IACrC,YAAY,IAAI,OAAO,CAAC,SAAS,GAAG,IAAI,CAAC;IAIzC,WAAW,IAAI,OAAO,CAAC,OAAO,CAAC;CAG7C"}

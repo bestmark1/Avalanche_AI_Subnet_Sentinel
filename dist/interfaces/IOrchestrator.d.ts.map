@@ -1,0 +1,1 @@
+{"version":3,"file":"IOrchestrator.d.ts","sourceRoot":"","sources":["../../src/interfaces/IOrchestrator.ts"],"names":[],"mappings":"AAGA;;;;;;;;;;;;;;;GAeG;AACH,MAAM,WAAW,aAAa;IAC5B,qEAAqE;IACrE,KAAK,IAAI,IAAI,CAAC;IAEd,iFAAiF;IACjF,IAAI,IAAI,IAAI,CAAC;IAEb,4DAA4D;IAC5D,SAAS,IAAI,OAAO,CAAC;IAErB,iEAAiE;IACjE,WAAW,IAAI,OAAO,CAAC,IAAI,CAAC,CAAC;CAC9B"}
