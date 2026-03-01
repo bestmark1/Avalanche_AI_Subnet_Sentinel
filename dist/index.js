@@ -2,11 +2,7 @@
 // src/index.ts
 // Composition Root — Manual Dependency Injection (ADR-003).
 // Wires all components, starts the system, handles graceful shutdown.
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
 const loadConfig_js_1 = require("./config/loadConfig.js");
 const ConsoleJsonLogger_js_1 = require("./logging/ConsoleJsonLogger.js");
 const InMemoryStateStore_js_1 = require("./store/InMemoryStateStore.js");
@@ -394,9 +390,10 @@ main().catch((err) => {
     process.exit(1);
 });
 // === WEB DASHBOARD ===
-const app = (0, express_1.default)();
+const express = require('express');
+const app = express();
 const PORT = process.env.PORT || 3000;
-app.use(express_1.default.static('public'));
+app.use(express.static('public'));
 app.get('/', (req, res) => {
     const html = `
     <!DOCTYPE html>
