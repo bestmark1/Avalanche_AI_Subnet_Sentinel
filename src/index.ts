@@ -482,13 +482,12 @@ main().catch((err: unknown) => {
 });
 
 // === WEB DASHBOARD ===
-const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.static('public'));
 
-app.get('/', (req, res) => {
+app.get('/', (_req: any, res: any) => {
   const html = `
     <!DOCTYPE html>
     <html lang="en">
