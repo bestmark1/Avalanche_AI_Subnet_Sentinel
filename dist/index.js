@@ -439,7 +439,7 @@ app.get('/', (_req, res) => {
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="card p-6 rounded-2xl hover:border-gray-500 transition-colors">
+                                <div class="card p-6 rounded-2xl hover:border-gray-500 transition-colors">
                     <h2 class="text-gray-400 text-sm uppercase tracking-wider mb-2 font-semibold">C-Chain Node</h2>
                     <p class="text-3xl font-bold" id="rpc-status">Connected</p>
                     <div class="mt-4 flex items-center gap-2">
@@ -454,10 +454,22 @@ app.get('/', (_req, res) => {
                     <p class="text-gray-400 text-sm mt-4">Status: <span id="ai-status" class="text-purple-400">Loading...</span></p>
                 </div>
 
+                <div class="card p-6 rounded-2xl hover:border-gray-500 transition-colors border-l-4 border-l-blue-500">
+                    <h2 class="text-gray-400 text-sm uppercase tracking-wider mb-2 font-semibold">Smart Contracts</h2>
+                    <p class="text-3xl font-bold text-blue-400">Monitoring</p>
+                    <p class="text-gray-400 text-sm mt-4">Active Alerts: <span class="text-white">0</span></p>
+                </div>
+
+                <div class="card p-6 rounded-2xl hover:border-gray-500 transition-colors border-l-4 border-l-yellow-500">
+                    <h2 class="text-gray-400 text-sm uppercase tracking-wider mb-2 font-semibold">Gas Oracle</h2>
+                    <p class="text-3xl font-bold text-yellow-400">25 nAVAX</p>
+                    <p class="text-gray-400 text-sm mt-4">Trend: <span class="text-green-400">Stable</span></p>
+                </div>
+
                 <div class="card p-6 rounded-2xl md:col-span-2 hover:border-gray-500 transition-colors border-l-4 border-l-red-500">
                     <div class="flex justify-between items-start">
                         <div>
-                            <h2 class="text-gray-400 text-sm uppercase tracking-wider mb-2 font-semibold">Whale Wallet Monitor</h2>
+                            <h2 class="text-gray-400 text-sm uppercase tracking-wider mb-2 font-semibold">Wallet Monitor</h2>
                             <p class="text-xl font-mono text-gray-300 mb-1" id="wallet-address">Loading...</p>
                         </div>
                         <div class="text-right">
@@ -469,7 +481,6 @@ app.get('/', (_req, res) => {
                         <div class="bg-red-500 h-1.5 rounded-full w-full animate-[pulse_2s_ease-in-out_infinite]"></div>
                     </div>
                 </div>
-            </div>
             
             <div class="mt-8 text-center text-gray-500 text-sm font-mono">
                 Server Uptime: <span id="server-uptime">0</span>s
@@ -477,7 +488,6 @@ app.get('/', (_req, res) => {
         </div>
 
         <script>
-            // Простая логика обновления данных
             async function fetchStats() {
                 const indicator = document.getElementById('update-indicator');
                 indicator.style.opacity = '1';
@@ -497,8 +507,6 @@ app.get('/', (_req, res) => {
                 
                 setTimeout(() => { indicator.style.opacity = '0'; }, 500);
             }
-
-            // Запускаем сразу и потом каждые 3 секунды
             fetchStats();
             setInterval(fetchStats, 3000);
         </script>
@@ -508,8 +516,6 @@ app.get('/', (_req, res) => {
     res.send(html);
 });
 app.listen(DASHBOARD_PORT, () => {
-    console.log(`[Dashboard] Web interface is running on http://localhost:\${DASHBOARD_PORT}\`);
-});
-    );
+    console.log(`[Dashboard] Web interface is running on http://localhost:${DASHBOARD_PORT}`);
 });
 //# sourceMappingURL=index.js.map
