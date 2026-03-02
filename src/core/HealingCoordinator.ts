@@ -112,7 +112,7 @@ export class HealingCoordinator {
     if (this.messenger === undefined) return;
 
     const statusLine = success
-      ? '✅ Command completed successfully.'
+      ? '✅ Critical error resolved. Avalanche C-Chain Node successfully restarted and synced.'
       : '❌ Command failed. Manual intervention may be required.';
 
     const text =
