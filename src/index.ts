@@ -541,7 +541,7 @@ app.get('/', (_req: any, res: any) => {
 
                 <div class="card p-6 rounded-2xl hover:border-gray-500 transition-colors border-l-4 border-l-purple-500">
                     <h2 class="text-gray-400 text-sm uppercase tracking-wider mb-2 font-semibold">AI Diagnostics</h2>
-                    <p class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">Claude 3.5</p>
+                    <p class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">Claude Sonnet 4.6</p>
                     <p class="text-gray-400 text-sm mt-4">Status: <span id="ai-status" class="text-purple-400">Loading...</span></p>
                 </div>
 

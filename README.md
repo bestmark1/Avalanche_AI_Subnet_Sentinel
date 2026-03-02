@@ -1,107 +1,32 @@
-# 🏔️ Avalanche Sentinel: AI-Powered Node Operator
+# 🏔 Avalanche AI Subnet Sentinel
 
-Avalanche Sentinel is a lightweight, zero-dependency AI DevOps agent designed specifically for Avalanche node operators. It continuously monitors blockchain metrics, uses Anthropic's Claude LLM for deep root-cause analysis, and can autonomously execute self-healing shell commands to keep your validator online.
+**Enterprise-grade AI monitoring, Auto-Healing, and Voice-Controlled management for Avalanche C-Chain and Subnet Validators.**
 
-## ✨ Core Features
+## 🚨 The Problem
+Validators and institutional investors in the Avalanche ecosystem often learn about critical node failures, memory leaks, or RPC desyncs *after* they happen, leading to potential slashing penalties and missed rewards. 
 
-- **🧠 AI-Driven Diagnostics:** Replaces raw metric alerts with human-readable, actionable insights via Claude LLM.
-- **🔗 Chainlink Oracle Integration:** Makes native `eth_call` requests to Chainlink Mainnet contracts to fetch real-time AVAX/USD prices.
-- **📱 Persistent Telegram UI:** Manage your node via a beautifully integrated 2x2 persistent Reply Keyboard in Telegram.
-- **🎙️ Voice ChatOps:** Send a voice message to the bot. Sentinel transcribes it instantly using the Deepgram API and executes your commands.
-- **🛠️ Auto-Healing:** Automatically executes custom, operator-defined bash scripts when critical failures are detected.
-- **🛡️ Secure & Ultra-Lightweight:** Built strictly with Node.js native `fetch`. Zero bloated libraries.
+## 💡 Our Solution
+**Avalanche Sentinel** is a proactive AI assistant powered by Claude 3.5. It doesn't just scan logs; it understands them. Combined with Chainlink oracles, Deepgram voice recognition, and an Auto-Healing module, Sentinel provides institutional-grade security and automated recovery directly via Telegram and an Enterprise web dashboard.
 
-## 🔑 Configuration & API Keys
+## ✨ Key Features
+* **🧠 AI-Powered Diagnostics (Claude 3.5):** Real-time analysis of node logs to predict and explain anomalies in plain human language.
+* **🛠 Auto-Healing System:** If the AI detects a critical failure, Sentinel can automatically execute recovery scripts to restart nodes without human intervention.
+* **🔗 Chainlink Oracle Integration:** Guarantees absolute accuracy and security for C-Chain Gas metrics and pricing data.
+* **🐋 Whale Wallet Monitor:** Real-time tracking of massive institutional balances (e.g., Binance Hot Wallets) on the Mainnet to prevent treasury depletion.
+* **🎙 Voice Control (Deepgram):** Manage your node hands-free. Send a voice message like *"Check node status"* in Telegram, and Sentinel will transcribe and execute it instantly.
+* **📊 Enterprise Web Dashboard:** A sleek, real-time UI displaying C-Chain health, AI status, and smart contract metrics.
 
-Before starting, you need to configure your environment and generate three API keys.
+## 🛠 Tech Stack
+* **Blockchain:** Avalanche C-Chain, Chainlink Oracles
+* **AI & Voice:** Anthropic Claude 3.5, Deepgram
+* **Backend:** Node.js, TypeScript, Express, PM2
+* **Interface:** Telegram Bot API, Tailwind CSS Dashboard
 
-### 1. Telegram Bot Token (`TELEGRAM_BOT_TOKEN`)
-1. Open Telegram and search for the official **[@BotFather](https://t.me/BotFather)**.
-2. Send the command `/newbot` and follow the instructions to choose a name and username for your bot.
-3. BotFather will give you a long HTTP API Token (e.g., `123456789:ABCdefGhIJKlmNoPQRsTUVwxyZ`). Copy this token.
-
-### 2. Anthropic Claude AI Key (`ANTHROPIC_API_KEY`)
-*This is the brain of your bot, used for deep analysis.*
-1. Go to the [Anthropic Console](https://console.anthropic.com/).
-2. Sign up and navigate to the **Settings -> API Keys** section.
-3. Click **Create Key**, name it "Avalanche Sentinel", and copy the key (starts with `sk-ant-api...`). 
-
-### 3. Deepgram Voice API Key (`DEEPGRAM_API_KEY`)
-*Used for instant Voice-to-Text translation in Telegram.*
-1. Go to the [Deepgram Console](https://console.deepgram.com/).
-2. Sign up (they provide a generous free tier).
-3. Go to **API Keys**, generate a new key, and copy it.
-
-### 4. Avalanche Wallet Address (`WALLET_ADDRESS`)
-*The address the bot will monitor for low balances.*
-Must be an Avalanche **C-Chain** (EVM) address starting with `0x...` (e.g., `0x1234567890abcdef1234567890abcdef12345678`). Do not use P-Chain or X-Chain addresses.
-
----
-
-## 🚀 Local Quick Start (Mac/Windows)
-
-1. Clone the repository:
-```bash
-git clone [https://github.com/your-username/Avalanche_AI_Subnet_Sentinel.git](https://github.com/your-username/Avalanche_AI_Subnet_Sentinel.git)
+## 🚀 Quick Start
+\`\`\`bash
+git clone https://github.com/your-repo/Avalanche_AI_Subnet_Sentinel.git
 cd Avalanche_AI_Subnet_Sentinel
-```
-
-2. Install dependencies and configure environment:
-```bash
-npm install
-cp .env.example .env
-# Open .env and paste your API keys and Wallet Address as described above.
-```
-
-3. Run the agent in the foreground:
-```bash
-npm start
-```
-
-## 🌍 Deployment (Ubuntu VPS / 24-7 Background Mode)
-
-To deploy the Sentinel on a fresh Ubuntu Linux server, follow these exact steps to ensure maximum uptime.
-
-### 1. Prepare the Server & Clone
-```bash
-apt-get update
-apt-get install -y git
-git clone [https://github.com/your-username/Avalanche_AI_Subnet_Sentinel.git](https://github.com/your-username/Avalanche_AI_Subnet_Sentinel.git)
-cd Avalanche_AI_Subnet_Sentinel
-```
-
-### 2. Configure Environment Variables
-```bash
-nano .env
-```
-*Paste your keys from your local `.env` file, save (`Ctrl+O`, `Enter`) and exit (`Ctrl+X`). Ensure you include your RPC endpoint: `SENTINEL_RPC_ENDPOINT="https://api.avax.network/ext/bc/C/rpc"`.*
-
-### 3. Install Node.js (v20) & Build
-```bash
-curl -fsSL [https://deb.nodesource.com/setup_20.x](https://deb.nodesource.com/setup_20.x) | sudo -E bash -
-sudo apt-get install -y nodejs
 npm install
 npm run build
-```
-
-### 4. Install PM2 & Start the Sentinel
-We use PM2 to keep the bot running 24/7. **Note:** We must pass the `--env-file` argument so Node.js loads your `.env` correctly.
-```bash
-npm install -g pm2
-pm2 start dist/index.js --name "sentinel" --node-args="--env-file=.env"
-```
-
-### 5. Setup Auto-Restart & Log Rotation
-Ensure the bot starts when the server reboots, and prevent log files from filling up your disk space:
-```bash
-pm2 save
-pm2 startup
-pm2 install pm2-logrotate
-```
-
-## 📱 Telegram Control Panel
-Send `/start` to the bot to attach the persistent 2x2 control panel:
-- **[📊 Status]** — View current node metrics (CPU, Blocks, RPC health).
-- **[💰 Balance]** — View C-Chain wallet balance and live Chainlink USD valuation.
-- **[🤖 AI Analysis]** — Force an immediate AI health evaluation.
-- **[🔄 Restart Node]** — Manually trigger your `AUTO_HEAL_COMMAND`.
+pm2 start dist/index.js --name sentinel --node-args="--env-file=.env"
+\`\`\`
